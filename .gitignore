@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+*.txt
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +23,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#Vite Cache
+.vite
+
+# Local Environment Files:
+.env.local
+.env.*.local
+
+#Sass Cache
+.sass-cache
+
+#NPM Packages Lockfile
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

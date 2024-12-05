@@ -28,7 +28,6 @@
 }
 
 body {
-  background-color: $background-grey;
   font-family: "Titillium";
   margin: 0;
   padding: 0;
@@ -113,7 +112,7 @@ p {
 ul {
   list-style: none;
   padding-left: 0;
-  color: $primary-color-instock-black;
+  color: $primary-color-inst-burnt-orange;
 }
 
 a {
@@ -128,7 +127,7 @@ button {
   width: 100%;
 
   &.primary-button {
-    background-color: $primary-color-instock-indigo-blue;
+    background-color: $primary-color-inst-orange;
     color: white;
   }
 
@@ -155,7 +154,7 @@ input {
   }
 
   &:active {
-    border: 1px solid $primary-color-instock-indigo-blue;
+    border: 1px solid $primary-color-inst-orange;
   }
 }
 
