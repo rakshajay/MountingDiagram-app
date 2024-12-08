@@ -2,10 +2,11 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import * as XLSX from "xlsx";
 import excelFile from "../../assets/Data/PDF Builder.xlsx";
+import { drawCanvas } from "../../canvasUtils";
 
 function InstallDrawing() {
 
-   // states to hold each data and use it on click
+  // states to hold each data and use it on click
   const [screenData, setScreenData] = useState([]);
   const [mediaPlayerData, setMediaPlayerData] = useState([]);
   const [mountsData, setMountsData] = useState([]);
@@ -15,17 +16,17 @@ function InstallDrawing() {
   const [selectedmount, setSelectedmount] = useState("");
   const [selectedRecpBox, setSelectedRecpBox] = useState("");
   const canvasRef = useRef(null);
-  
+
   // fecthing data from javscript and converting it to JSON 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(excelFile);
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: "array" });
-      const screenSheetName = workbook.SheetNames[0]; 
-      const screenSheet = workbook.Sheets[screenSheetName]; 
-      const jsonData = XLSX.utils.sheet_to_json(screenSheet); 
-      setScreenData(jsonData); 
+      const screenSheetName = workbook.SheetNames[0];
+      const screenSheet = workbook.Sheets[screenSheetName];
+      const jsonData = XLSX.utils.sheet_to_json(screenSheet);
+      setScreenData(jsonData);
       const mediaPlayerSheetName = workbook.SheetNames[1];
       const mediaPlayerSheet = workbook.Sheets[mediaPlayerSheetName];
       const mediaPData = XLSX.utils.sheet_to_json(mediaPlayerSheet);
@@ -44,47 +45,7 @@ function InstallDrawing() {
   }, []);
 
   useEffect(() => {
-    if (selectedScreen) {
-      const selectedData = screenData.find(
-        (row) => row["Screen MFR"] === selectedScreen
-      );
-      console.log("selectedScreen", selectedScreen)
-      console.log("selectedData",selectedData)
-      if (selectedData) {
-        const { Height, Width } = selectedData;
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
-        
-        // Clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // scale in canvas works with pixcel, for visually rigth scale increase the width and hight
-        let newWidth = 18*Width;
-        let newHeight = 18*Height;
-       
-        //increasing niche(2.5") proportional to increased height and width.
-        let newNiche = 18*2.5
-
-        // to get rec in center of screen 
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const rect1X = centerX - (newWidth/2);
-        const rect1Y = centerY - (newHeight/2);
-
-         // to get niche rec in center of screen 
-         const nicheRect1X = centerX - (newWidth/2+newNiche/2);
-         const nicheRrect1Y = centerY - (newHeight/2+newNiche/2);
-        
-        ctx.lineWidth = 10; 
-
-        ctx.strokeRect(rect1X, rect1Y, newWidth, newHeight);
-
-        ctx.lineWidth = 2; // Set a different line width for the second rectangle
-        ctx.strokeRect(nicheRect1X, nicheRrect1Y, newWidth+newNiche, newHeight+newNiche);
-
-   
-      }
-    }
+    drawCanvas(canvasRef, selectedScreen, screenData);
   }, [selectedScreen, screenData]);
 
   return (
@@ -157,9 +118,9 @@ function InstallDrawing() {
       </div>
       <canvas
         ref={canvasRef}
-        width={1200}
-        height={1200}
-        style={{ width:"600px", height: "600px" , border: "1px solid black", marginTop: "20px" }}
+        width={2200}
+        height={2200}
+        style={{ width: "600px", height: "600px", border: "1px solid black", marginTop: "20px" }}
       ></canvas>
     </div>
     //<canvas ref={canvasRef} width={500} height={500} style={{ border: "1px solid black" }}></canvas>
