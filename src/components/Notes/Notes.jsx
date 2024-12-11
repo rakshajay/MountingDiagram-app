@@ -2,15 +2,17 @@ import React from 'react';
 import "./Notes.scss"
 import "../Configuration/Configuration.scss";
 
-function notes({ selectedRecpBox, recpBoxData }) {
-    console.log(recpBoxData)
+function notes({ selectedRecpBox, recpBoxData, mountsData, selectedMount }) {
     const selectedData = recpBoxData.find(
         (row) => row["MFG. PART"] === selectedRecpBox
     );
-    console.log(selectedData)
 
-    if (selectedData) {
-        const { Height, Width, Depth } = selectedData;
+    const selectedMountData = mountsData.find(
+        (row) => row["MFG. PART"] === selectedMount
+    );
+    
+    const { Height = "--Select rcep. box--", Width = "--Select rcep. box--", Depth = "--Select rcep. box--" } = selectedData ?? {};
+    const { MaximumLoad = "N/A" } = selectedMountData ?? {};
 
         return (
             <div id="border">
@@ -19,7 +21,8 @@ function notes({ selectedRecpBox, recpBoxData }) {
                 </h3>
                 <div>
                     <p>1. All dimensions are in inches.</p>
-                    <p>2. Install recessed receptacle box with:</p>
+                    <p>2. Selected mount can carry max. of {MaximumLoad}lbs</p>
+                    <p>3. Install recessed receptacle box with:</p>
                     <ul>
                         <li>2x Terminated Power Outlets</li>
                         <li>1x Terminated Data CAT5 Ethernet Outlet</li>
@@ -62,6 +65,6 @@ function notes({ selectedRecpBox, recpBoxData }) {
             </div>
         )
     }
-}
+
 
 export default notes

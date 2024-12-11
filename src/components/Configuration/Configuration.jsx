@@ -9,7 +9,7 @@ import ScreenDim from "../ScreenDim/ScreenDim";
 import Notes from "../Notes/Notes";
 import Swal from "sweetalert2";
 import { validateSelection } from "../../onBlurUtils";
-
+import CompanyInfo from "../companyInfo/CompanyInfo";
 
 function Configuration({ onScreenSelect, screenData }) {
   // states to hold each data and use it on click
@@ -73,11 +73,13 @@ function Configuration({ onScreenSelect, screenData }) {
       <div className="switches__left">
        <div>
        <NicheDim screenData={screenData} selectedScreen={selectedScreen} />
-       <Notes selectedRecpBox={selectedRecpBox} recpBoxData={recpBoxData} />
-       </div>
-       <div> 
-       
        <ScreenDim screenData={screenData} selectedScreen={selectedScreen}/>
+       </div>
+       <div>  
+       <Notes selectedRecpBox={selectedRecpBox} recpBoxData={recpBoxData} mountsData={mountsData} selectedMount={selectedMount}/>      
+      </div>
+       <div>        
+       <CompanyInfo/>
        </div>
       </div>
       <div className="switches__right" >

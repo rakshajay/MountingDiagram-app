@@ -135,10 +135,14 @@
   .switches__left{
     order:2;
     border: .0625rem solid rgb($background-grey, .2);
-    padding:.2rem;
+    padding:.1rem;
     display: flex;
     flex-direction: column;
     gap:.5rem;
+
+    > *:last-child {
+      margin-top: auto;
+    }
     @include tablet{
       order:1;
     }

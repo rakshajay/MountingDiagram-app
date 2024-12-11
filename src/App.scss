@@ -100,19 +100,12 @@ a {
 
 button {
   border: none;
-  border-radius: 1.25rem;
+  border: .0625rem solid rgb($background-grey, .2);
+  border-radius: .25rem;
   height: 2.25rem;
-  padding: 0 1rem;
-  width: 100%;
-
-  &.primary-button {
-    background-color: $primary-color-inst-orange;
-    color: white;
-  }
-
-  @include tablet {
-    height: 2.375rem;
-  }
+  margin: .4rem;
+  width: 95%;
+  @include mobile-p2-body-medium;
 }
 
 input {
