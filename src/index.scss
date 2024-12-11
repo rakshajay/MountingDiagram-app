@@ -1,24 +1,21 @@
 @media print {
     @page {
-        size: A4 landscape; 
-        margin: 0;
+        margin: 0; /* Remove default page margins */
     }
 
     body {
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center; 
-        align-items: center; 
-        height: 100vh; 
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Full viewport height */
     }
 
     .content {
-        width: 100%; 
-        max-width: 297mm; 
-        max-height: 210mm; 
-        box-shadow: none; 
-        transform: scale(1);
-        text-align: center; 
+        width: 100%; /* Fit content to page width */
+        box-shadow: none; /* Remove any shadows for print */
+        transform: scale(1); /* Ensure no scaling distortion */
+        text-align: center; /* Optional: Center content text */
     }
 }
