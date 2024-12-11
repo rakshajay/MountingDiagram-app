@@ -9,11 +9,12 @@
   @include mobile-p3-body-small;
   width: 100%;
   text-align: left;
+  padding: .6rem;
+  border: .0625rem solid rgb($background-grey, .2);
 
   @include tablet{
     flex-direction: row;
-    gap:1rem;
-    width: 40vw;
+    gap:1.5rem;
   }
 
   select{
@@ -28,7 +29,24 @@
         outline: none;
       }
   }
+
+  &__first{
+    border: .0625rem solid rgb($background-grey, .2);
+  
+    @include tablet{
+        flex-direction: row;
+    }
+    
+  }
+  
+  &__drawings{
+    width: 60vw;
+    height: auto;
+}
+  
   &__right{
+    display: flex;
+    flex-direction: column;
     order: 1;
     border: .0625rem solid rgb($background-grey, .2);
     padding:.2rem;
@@ -37,6 +55,9 @@
       display: flex;
       flex-direction: column;
       margin-top: .4rem;
+    }
+    > *:last-child {
+      margin-top: auto;
     }
   }
 
@@ -153,3 +174,5 @@
       display: none;
     }
   }
+
+  

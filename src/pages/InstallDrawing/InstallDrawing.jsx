@@ -7,47 +7,48 @@ import * as XLSX from "xlsx";
 import excelFile from "../../assets/Data/PDF Builder.xlsx";
 
 function InstallDrawing() {
-  const [screenData, setScreenData] = useState([]);
-  const [selectedScreen, setSelectedScreen] = useState("55CT5WJ");
-  const [floorDis, setFloorDis] = useState("");
-  const canvasRef = useRef(null);
+  // const [screenData, setScreenData] = useState([]);
+  // const [selectedScreen, setSelectedScreen] = useState("55CT5WJ");
+  // const [floorDis, setFloorDis] = useState("");
+  // const [selected, setSelected] = useState("Horizontal");
+  // // const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const fetchScreenData = async () => {
-      const response = await fetch(excelFile);
-      const arrayBuffer = await response.arrayBuffer();
-      const workbook = XLSX.read(arrayBuffer, { type: "array" });
-      const screenSheetName = workbook.SheetNames[0];
-      const screenSheet = workbook.Sheets[screenSheetName];
-      const jsonData = XLSX.utils.sheet_to_json(screenSheet);
-      setScreenData(jsonData);
-    };
-    fetchScreenData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchScreenData = async () => {
+  //     const response = await fetch(excelFile);
+  //     const arrayBuffer = await response.arrayBuffer();
+  //     const workbook = XLSX.read(arrayBuffer, { type: "array" });
+  //     const screenSheetName = workbook.SheetNames[0];
+  //     const screenSheet = workbook.Sheets[screenSheetName];
+  //     const jsonData = XLSX.utils.sheet_to_json(screenSheet);
+  //     setScreenData(jsonData);
+  //   };
+  //   fetchScreenData();
+  // }, []);
 
-  useEffect(() => {
-    drawCanvas(canvasRef, selectedScreen, screenData, floorDis);
-  }, [selectedScreen, screenData, floorDis]);
+  // useEffect(() => {
+  //   drawCanvas(canvasRef, selectedScreen, screenData, floorDis);
+  // }, [selectedScreen, screenData, floorDis]);
 
-  const handleScreenSelect = (screen, selectedData, floorDis) => {
-    setSelectedScreen(screen, selectedData, floorDis);
-    setFloorDis(floorDis)
-  };
-
+  // const handleScreenSelect = (screen, selectedData, floorDis) => {
+  //   setSelectedScreen(screen, selectedData, floorDis);
+  //   setFloorDis(floorDis)
+  //   setSelected(selected)
+  // };
   return (
     <div>
-      <div className="printpage">
-        <div>
+      <div >
+        {/* <div>
           <canvas
             className="printpage__drawings"
             id="canvas"
             ref={canvasRef}
             width={2400}
-            height={1800}
+            height={2200}
          ></canvas>
-        </div>
+        </div> */}
         <div className="printpage__specs">
-          <Configuration onScreenSelect={handleScreenSelect} screenData={screenData} />
+          <Configuration />
         </div>
       </div>
     </div>

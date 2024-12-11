@@ -1,14 +1,42 @@
 import { drawMeasurementText } from "./textUtils";
 
 
-export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis) => {
+export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, selected) => {
     if (!canvasRef.current) return;
-
+    console.log("floorDis", floorDis)
+    console.log("selected", selected)
     const selectedData = screenData.find(
         (row) => row["Screen MFR"] === selectedScreen
     );
     if (selectedData) {
-        const { Height, Width } = selectedData;
+        let { Height, Width } = selectedData;
+
+
+        // Swap Width and Height if orientation is Vertical
+        if (selected === "Vertical") {
+            [Width, Height] = [Height, Width]; // Swap values
+        }
+        
+        const scaleDimensions = (width, height, maxWidth) => {
+            if (width > maxWidth) {
+                const scaleFactor = maxWidth / width;
+                return {
+                    width: Math.round(width * scaleFactor),
+                    height: Math.round(height * scaleFactor),
+                };
+            }
+            return { width, height };
+        };
+        
+        // Apply scaling conditions
+        if (Width > 500) {
+            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 80));
+        } else if (Width > 100) {
+            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 100));
+        }
+        
+        console.log("Scaled Width:", Width, "Scaled Height:", Height);
+        
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
