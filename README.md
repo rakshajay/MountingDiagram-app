@@ -2,13 +2,8 @@
  a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
 
 ---
----
 
-## 📅 **Screenshots and GIFs**
-
-Here’s a sneak peek of the app in action:
-
-### Equipment Selection:
+## 📅 **Screenshot**
 ![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
 
 ## **Overview**
