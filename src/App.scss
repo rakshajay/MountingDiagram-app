@@ -59,6 +59,8 @@ a,
 button {
   font-size: 0.8125rem;
   line-height: 1.25rem;
+  margin-bottom: .2rem;
+  margin-top:-.5rem;
 
   @include tablet {
     font-size: 0.875rem;
@@ -80,39 +82,16 @@ h4 {
 }
 
 p {
-  font-size: 0.8125rem;
-  line-height: 1.25rem;
-
-  @include tablet {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-  }
-
-  &.small {
-    font-size: 0.6875rem;
-    line-height: 1rem;
-
-    @include tablet {
-      font-size: 0.75rem;
-      line-height: 1.125rem;
-    }
-  }
-
-  &.large {
-    font-size: 0.9375rem;
-    line-height: 1.625rem;
-
-    @include tablet {
-      font-size: 1rem;
-      line-height: 1.75rem;
-    }
-  }
+  @include mobile-p3-body-small;
+  margin: 0;
 }
 
 ul {
   list-style: none;
   padding-left: 0;
   color: $primary-color-inst-burnt-orange;
+  list-Style-Type: disc;
+  margin-Left: 1.5rem;
 }
 
 a {
@@ -138,23 +117,27 @@ button {
 
 input {
   border-radius: 1.25rem;
-  padding: 0.5rem;
-  margin-block-end: 1rem;
+  padding: 0.2rem;
+  margin-bottom: .2rem;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid $secondary-color-cloud;
-  height: 2.25rem;
-
-  &.input__with-icon {
-    background-position: right;
-    background-repeat: no-repeat;
-    padding-right: 2.5rem;
-    padding-left: 1rem;
-    background-position-x: calc(100% - 1rem);
-  }
+  border: .0625rem solid rgb($background-grey, .2);
+  border-radius: .25rem;
+  @include mobile-p3-body-small;
 
   &:active {
     border: 1px solid $primary-color-inst-orange;
   }
+      &:focus {
+        background-color:rgba($secondary-color-cloud, 0.3);
+        border: .0825rem solid $primary-color-inst-burnt-orange;
+        outline: none;
+      }
+}
+
+#border{
+  border: .0625rem solid rgb($background-grey, .2);
+  padding:.6rem;
+  margin: .4rem;
 }
 

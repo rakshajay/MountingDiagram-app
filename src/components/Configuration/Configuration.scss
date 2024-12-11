@@ -1,0 +1,151 @@
+@use "../../styles/mixins" as *;
+@use "../../Styles/variables" as *;
+
+
+.switches{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  @include mobile-p3-body-small;
+  width: 100%;
+  text-align: left;
+
+  @include tablet{
+    flex-direction: row;
+    gap:1rem;
+    width: 40vw;
+  }
+
+  select{
+    @include mobile-p3-body-small;
+    border: .0625rem solid rgb($background-grey, .2);
+    border-radius: .25rem;
+    height: 2rem;
+    text-align: center;
+    &:focus {
+        background-color:rgba($secondary-color-cloud, 0.3);
+        border: .0825rem solid $primary-color-inst-burnt-orange;
+        outline: none;
+      }
+  }
+  &__right{
+    order: 1;
+    border: .0625rem solid rgb($background-grey, .2);
+    padding:.2rem;
+    &-drop{
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      margin-top: .4rem;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: .6rem;
+    gap:.4rem;
+    }
+   &__container {
+    position: relative;
+    display: flex;
+    background-color: $primary-color-white;
+    border: .0625rem solid $secondary-color-cloud;
+    border-radius: .3125rem;
+    overflow: hidden;
+    
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    flex: 1;
+    text-align: center;
+    color: $secondary-color-slate;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &--active {
+      color: $primary-color-white;
+      z-index: 12;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: $background-grey;
+    transition: transform 0.3s ease;
+    color: $primary-color-white;
+
+    &--horizontal {
+      transform: translateX(0%);
+    }
+
+    &--vertical {
+      transform: translateX(100%);
+    }
+  }
+  
+    .floor-distance {
+      display: flex;
+      align-items: center;
+      border: .0625rem solid rgb($background-grey, .2);
+      border-radius: .25rem;
+      overflow: hidden;
+      width: 100%;
+      object-fit: contain;
+      margin-top: .4rem;
+
+      &__label {
+        flex: 1;
+        background-color: $secondary-color-cloud;
+        color: $secondary-color-slate;
+        text-align: center;
+        padding: .225rem;
+        border: .0625rem solid rgb($background-grey, .2);
+      }
+    
+      &__input {
+        margin: 0;
+        flex: 1;
+        border: none;
+        outline: none;
+        text-align: center;
+        color:$secondary-color-slate;
+        padding: .225rem;
+        border-radius: 0;
+        border: none;
+    
+        &:focus {
+          background-color:rgba($secondary-color-cloud, 0.3);
+          border: .0825rem solid $primary-color-inst-burnt-orange;
+          outline: none;
+        }
+      }
+    }
+  }
+
+
+  .switches__left{
+    order:2;
+    border: .0625rem solid rgb($background-grey, .2);
+    padding:.2rem;
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    @include tablet{
+      order:1;
+    }
+  }
+
+  @media print {
+    button {
+      display: none;
+    }
+  }

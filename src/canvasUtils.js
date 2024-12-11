@@ -1,3 +1,6 @@
+import { drawMeasurementText } from "./textUtils";
+
+
 export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
     if (!canvasRef.current) return;
 
@@ -36,6 +39,20 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
 
         ctx.lineWidth = 2;
         ctx.strokeRect(nicheRect1X, nicheRrect1Y, newWidth + newNiche, newHeight + newNiche);
+
+        //Draw dashed rec inside TV rec
+        const offset = 4 * 18; // 72 pixels
+
+        ctx.setLineDash([50, 25]); // Set dash pattern
+
+        const dashedRectX = rect1X + offset; // Shift X position inward
+        const dashedRectY = rect1Y + offset; // Shift Y position inward
+        const dashedRectWidth = newWidth - 2 * offset; // Reduce width by 2 * offset
+        const dashedRectHeight = newHeight - 2 * offset; // Reduce height by 2 * offset
+
+        ctx.strokeRect(dashedRectX, dashedRectY, dashedRectWidth, dashedRectHeight);
+
+        ctx.setLineDash([]); // Reset to solid lines
 
         // Draw a filled black triangle at (rect1X, rect1Y)
         const triangleSize = 20; // Customize the size of the triangle
@@ -198,31 +215,31 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
 
         //Draw triangle on floor line edge bottom
         ctx.beginPath();
-        ctx.moveTo(150, yOffset); // Base vertex (aligned with the floor line)
-        ctx.lineTo(150 + triangleSize / 2, yOffset - triangleSize); // Bottom-left vertex
-        ctx.lineTo(150 - triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
+        ctx.moveTo(canvas.width/2 - newWidth +650, yOffset); // Base vertex (aligned with the floor line)
+        ctx.lineTo(canvas.width/2 - newWidth +650 + triangleSize / 2, yOffset - triangleSize); // Bottom-left vertex
+        ctx.lineTo(canvas.width/2 - newWidth +650- triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
         ctx.closePath();
         ctx.fill();
 
         //Draw triangle on center line of TV
         ctx.beginPath();
         const centerYPoint = canvas.height / 2; // Center of the canvas vertically        
-        ctx.moveTo(150, centerYPoint); // Top vertex (aligned to the center of the canvas)
-        ctx.lineTo(150 - triangleSize / 2, centerYPoint + triangleSize); // Bottom-left vertex
-        ctx.lineTo(150 + triangleSize / 2, centerYPoint + triangleSize); // Bottom-right vertex
+        ctx.moveTo(canvas.width/2 - newWidth +650, centerYPoint); // Top vertex (aligned to the center of the canvas)
+        ctx.lineTo(canvas.width/2 - newWidth +650 - triangleSize / 2, centerYPoint + triangleSize); // Bottom-left vertex
+        ctx.lineTo(canvas.width/2 - newWidth +650 + triangleSize / 2, centerYPoint + triangleSize); // Bottom-right vertex
         ctx.closePath();
         ctx.fill();
 
         //Draw connecting line
         ctx.beginPath();
-        ctx.moveTo(150, yOffset); // Left triangle base
-        ctx.lineTo(150, centerYPoint); // Right triangle base
+        ctx.moveTo(canvas.width/2 - newWidth +650, yOffset); // Left triangle base
+        ctx.lineTo(canvas.width/2 - newWidth +650, centerYPoint); // Right triangle base
         ctx.stroke();
 
         // Draw a rotated "Z" symbol with a white background on the connecting line
         ctx.save(); // Save the current context state
 
-        const breaklineX = 150; // X-coordinate (center of the line)
+        const breaklineX = canvas.width/2 - newWidth +650; // X-coordinate (center of the line)
         const breaklineY = (yOffset + centerYPoint) / 2.2; // Y-coordinate (midpoint of the line)
         const textSize = 20; // Font size for the letter "Z"
 
@@ -236,7 +253,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
         ctx.translate(breaklineX, breaklineY); // Move the context to the center of the letter
         ctx.rotate((45 * Math.PI) / 180); // Rotate 90 degrees clockwise
 
-        
+
         // Thin "Z" with strokeText and reduced opacity
         ctx.globalAlpha = 0.5; // Reduce opacity
         ctx.font = `20px 'Helvetica Neue', 'Segoe UI', Arial, sans-serif`;
@@ -246,10 +263,94 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
         ctx.fillStyle = "black";
         ctx.fillText("Z", 0, 0);
         ctx.globalAlpha = 1.0; // Reset opacity
-
         ctx.restore(); // Restore the original context state
 
 
+        // Dotted Lines
+
+        ctx.setLineDash([25, 15]);
+
+        //Draw center line horiz
+        ctx.beginPath();
+        ctx.moveTo(100, canvas.height / 2); // center 
+        ctx.lineTo(canvas.width - 100, canvas.height / 2); // end
+        ctx.stroke();
+
+        //Draw center line verticle
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, 300); // center 
+        ctx.lineTo(canvas.width / 2, canvas.height - 300); // Right triangle base
+        ctx.stroke();
+
+        ctx.lineWidth = 2;
+        ctx.setLineDash([15, 15]);
+        // Draw rectangles if selectedRecpBox exists
+        const offset4Inches = newHeight / 200 * 18; // 4 inches offset (72 pixels)
+        const offset1Inch = 1 * 18;   // 1 inch offset (18 pixels)
+        const rectHeight = newHeight / 4;        // Height of the rectangle in pixels
+        const rectWidth = newWidth / 6;         // Width of the rectangle in pixels
+
+        // First rectangle: 4 inches below the center horizontal line
+        const firstRectX = (canvas.width / 2) - (rectWidth / 2); // Center horizontally
+        const firstRectY = (canvas.height / 2) + offset4Inches; // 4 inches below center
+        ctx.strokeRect(firstRectX, firstRectY, rectWidth, rectHeight);
+
+        // Second rectangle: 1 inch offset inward from the first rectangle
+        const secondRectX = firstRectX + offset1Inch; // Shifted right by 1 inch
+        const secondRectY = firstRectY + offset1Inch; // Shifted down by 1 inch
+        const secondRectWidth = rectWidth - 2 * offset1Inch; // Shrink width by 2 inches
+        const secondRectHeight = rectHeight - 2 * offset1Inch; // Shrink height by 2 inches
+        ctx.strokeRect(secondRectX, secondRectY, secondRectWidth, secondRectHeight);
+
+        ctx.setLineDash([]);
+
+
+        // Draw the full circle outline
+
+        const radius = newHeight / 50;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Draw filled quarter sections
+        ctx.fillStyle = "black";
+
+        // Top-left quarter (filled)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY); // Center
+        ctx.arc(centerX, centerY, radius, Math.PI, 1.5 * Math.PI); // Top-left quarter
+        ctx.closePath();
+        ctx.fill();
+
+        // Bottom-right quarter (filled)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY); // Center
+        ctx.arc(centerX, centerY, radius, 0, 0.5 * Math.PI); // Bottom-right quarter
+        ctx.closePath();
+        ctx.fill();
+
+
+        //TEXT OR MESUREMENTS
+
+        const measurements = {
+            width: Width,
+            height: Height,
+            nicheWidth: Width + 2.5,
+            nicheHeight: Height + 2.5,
+        };
+        
+        const positions = {
+            widthPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y - 150 },
+            heightPos: { x: rect1X + newWidth + 200, y: rect1Y + newHeight / 2 - 50 },
+            nicheLeftPos: { x: rect1X - 200, y: rect1Y + newHeight / 2 - 50 },
+            nicheBottomPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y + newHeight + 220 },
+        };
+        
+        // Draw all measurements with backgrounds
+        drawMeasurementText(ctx, measurements, positions);
+
+
     }
+
 
 }

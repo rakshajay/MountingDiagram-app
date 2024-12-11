@@ -1,0 +1,169 @@
+@font-face {
+  font-family: "Titillium";
+  src: url(/src/assets/font/TitilliumWeb-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Titillium";
+  src: url(/src/assets/font/TitilliumWeb-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Titillium";
+  src: url(/src/assets/font/TitilliumWeb-Italic.ttf) format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+#app__body {
+  padding: 0 1.5rem;
+}
+@media (min-width: 767px) {
+  #app__body {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  #app__body {
+    margin: auto;
+    padding: 0 8.125rem;
+  }
+}
+
+.app__container {
+  position: relative;
+  top: -4rem;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(60, 72, 88, 0.1);
+  overflow: hidden;
+}
+@media (min-width: 767px) {
+  .app__container {
+    top: -5.875rem;
+  }
+}
+
+body {
+  font-family: "Titillium";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+@media (min-width: 767px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+@media (min-width: 767px) {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+h3,
+a,
+button {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.2rem;
+  margin-top: -0.5rem;
+}
+@media (min-width: 767px) {
+  h3,
+  a,
+  button {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+
+h4 {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: bold;
+  color: #3c4858;
+  margin-block-end: 0.5rem;
+}
+@media (min-width: 767px) {
+  h4 {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+  }
+}
+
+p {
+  font-family: "Titillium";
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  color: #7F3800;
+  list-Style-Type: disc;
+  margin-Left: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  border-radius: 1.25rem;
+  height: 2.25rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+button.primary-button {
+  background-color: #b35701;
+  color: white;
+}
+@media (min-width: 767px) {
+  button {
+    height: 2.375rem;
+  }
+}
+
+input {
+  border-radius: 1.25rem;
+  padding: 0.2rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0.0625rem solid rgba(55, 71, 79, 0.2);
+  border-radius: 0.25rem;
+  font-family: "Titillium";
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
+input:active {
+  border: 1px solid #b35701;
+}
+input:focus {
+  background-color: rgba(215, 204, 200, 0.3);
+  border: 0.0825rem solid #7F3800;
+  outline: none;
+}
+
+#border {
+  border: 0.0625rem solid rgba(55, 71, 79, 0.2);
+  padding: 0.6rem;
+  margin: 0.4rem;
+}/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,25 @@
+@use "../../styles/mixins" as *;
+@use "../../Styles/variables" as *;
+
+
+.printpage{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+    border-width: .2rem;
+    border-style: solid;
+    gap:1rem;
+
+    @include tablet{
+        flex-direction: row;
+    }
+
+    &__drawings{
+            width: 100%;
+            // object-fit: contain;
+    }
+    
+    
+}

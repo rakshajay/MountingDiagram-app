@@ -1,0 +1,20 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.footer__text {
+  color: #3c4858;
+  font-weight: 500;
+  font-size: 0.5rem;
+}
+@media (min-width: 767px) {
+  .footer__text {
+    font-size: 0.625rem;
+  }
+}/*# sourceMappingURL=Footer.css.map */
