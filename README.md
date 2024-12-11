@@ -109,7 +109,7 @@ Follow these steps to set up the project locally:
 Here’s a sneak peek of the app in action:
 
 ### App Walkthrough:
-![GIF Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/Untitled_Project_V1.mp4)
+![GIF Placeholder](https://www.kapwing.com/videos/67592a863ce4b31a2a190ebb)
 
 ### Equipment Selection:
 ![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
