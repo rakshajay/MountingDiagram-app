@@ -1,8 +1,13 @@
 # 📀 LED Screen Mounting Diagram Tool
  a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
+ a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
 
 ---
 
+## 📅 **Screenshot**
+![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
+
+## **Overview**
 ## **Overview**
 
 This tool lets users:
@@ -77,6 +82,7 @@ Follow these steps to set up the project locally:
    ```
 
 4. Open your browser at `http://localhost:5173 or your available portal`.
+4. Open your browser at `http://localhost:5173 or your available portal`.
 
 ---
 
@@ -101,6 +107,7 @@ Here’s a sneak peek of the app in action:
 ---
 
 ## 🔗 **Known Issues**
+-print paper size not matching the poportion correct.
 -print paper size not matching the poportion correctly
 
 ---
@@ -112,6 +119,3 @@ Your feedback is incredibly important! Whether it’s about usability or a featu
 - **Email**: rakshashettyhs@gmail.com 
 - **LinkedIn**: [https://www.linkedin.com/in/rakshajay/](#)  
 
----
-
-With this app, LED screen installations just got simpler, faster, and more reliable. I hope this tool enhances productivity and makes a real difference in the field. 🚀
