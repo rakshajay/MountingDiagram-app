@@ -2,6 +2,14 @@
  a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
 
 ---
+---
+
+## 📅 **Screenshots and GIFs**
+
+Here’s a sneak peek of the app in action:
+
+### Equipment Selection:
+![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
 
 ## **Overview**
 
@@ -80,29 +88,8 @@ Follow these steps to set up the project locally:
 
 ---
 
-## 📅 **Screenshots and GIFs**
-
-Here’s a sneak peek of the app in action:
-
-### App Walkthrough:
-![GIF Placeholder](https://www.kapwing.com/videos/67592a863ce4b31a2a190ebb)
-
-### Equipment Selection:
-![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
-
----
-
-## 🔬 **Testing**
-
-- responsive design across various screen sizes.
-- Verified the accuracy of measurements and spacing.
-- PDFs generated were validated for correctness.
-
----
-
 ## 🔗 **Known Issues**
--print paper size not matching the poportion correctly
-
+-print paper size not matching the poportion correct.
 ---
 
 ## 📢 **Feedback**
@@ -112,6 +99,3 @@ Your feedback is incredibly important! Whether it’s about usability or a featu
 - **Email**: rakshashettyhs@gmail.com 
 - **LinkedIn**: [https://www.linkedin.com/in/rakshajay/](#)  
 
----
-
-With this app, LED screen installations just got simpler, faster, and more reliable. I hope this tool enhances productivity and makes a real difference in the field. 🚀
