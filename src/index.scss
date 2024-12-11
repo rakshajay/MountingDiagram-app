@@ -7,15 +7,15 @@
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        height: 100vh; /* Full viewport height */
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
     }
 
     .content {
-        width: 100%; /* Fit content to page width */
-        box-shadow: none; /* Remove any shadows for print */
-        transform: scale(1); /* Ensure no scaling distortion */
-        text-align: center; /* Optional: Center content text */
+        width: 100%; 
+        box-shadow: none; 
+        transform: scale(1);
+        text-align: center; 
     }
 }
