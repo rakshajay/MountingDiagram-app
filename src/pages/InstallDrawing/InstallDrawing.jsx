@@ -9,6 +9,7 @@ import excelFile from "../../assets/Data/PDF Builder.xlsx";
 function InstallDrawing() {
   const [screenData, setScreenData] = useState([]);
   const [selectedScreen, setSelectedScreen] = useState("55CT5WJ");
+  const [floorDis, setFloorDis] = useState("");
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -25,11 +26,12 @@ function InstallDrawing() {
   }, []);
 
   useEffect(() => {
-    drawCanvas(canvasRef, selectedScreen, screenData);
-  }, [selectedScreen, screenData]);
+    drawCanvas(canvasRef, selectedScreen, screenData, floorDis);
+  }, [selectedScreen, screenData, floorDis]);
 
-  const handleScreenSelect = (screen, selectedData) => {
-    setSelectedScreen(screen, selectedData);
+  const handleScreenSelect = (screen, selectedData, floorDis) => {
+    setSelectedScreen(screen, selectedData, floorDis);
+    setFloorDis(floorDis)
   };
 
   return (

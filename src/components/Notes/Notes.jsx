@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Notes.scss"
 import "../Configuration/Configuration.scss";
 
 function notes({ selectedRecpBox, recpBoxData, mountsData, selectedMount }) {

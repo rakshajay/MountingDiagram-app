@@ -1,5 +1,4 @@
 import React from 'react';
-import "./ScreenDim.scss"
 import "../Configuration/Configuration.scss";
 
 function ScreenDim({screenData, selectedScreen}) {

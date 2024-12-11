@@ -1,27 +1,25 @@
 import { drawMeasurementText } from "./textUtils";
 
 
-export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
+export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis) => {
     if (!canvasRef.current) return;
 
     const selectedData = screenData.find(
         (row) => row["Screen MFR"] === selectedScreen
     );
-    console.log("selectedScreen", selectedScreen)
-    console.log("selectedData", selectedData)
     if (selectedData) {
         const { Height, Width } = selectedData;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        // Clear the canvas
+        //Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // scale in canvas works with pixcel, for visually rigth scale increase the width and hight
+        //Scale in canvas works with pixcel, for visually rigth scale increase the width and hight
         let newWidth = 18 * Width;
         let newHeight = 18 * Height;
 
-        //increasing niche(2.5") proportional to increased height and width.
+        //Increasing niche(2.5") proportional to increased height and width.
         let newNiche = 18 * 2.5
 
         // to get rec in center of screen 
@@ -215,31 +213,31 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
 
         //Draw triangle on floor line edge bottom
         ctx.beginPath();
-        ctx.moveTo(canvas.width/2 - newWidth +650, yOffset); // Base vertex (aligned with the floor line)
-        ctx.lineTo(canvas.width/2 - newWidth +650 + triangleSize / 2, yOffset - triangleSize); // Bottom-left vertex
-        ctx.lineTo(canvas.width/2 - newWidth +650- triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
+        ctx.moveTo(nicheRect1X - 120, yOffset); // Base vertex (aligned with the floor line)
+        ctx.lineTo(nicheRect1X - 120 + triangleSize / 2, yOffset - triangleSize); // Bottom-left vertex
+        ctx.lineTo(nicheRect1X - 120- triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
         ctx.closePath();
         ctx.fill();
 
         //Draw triangle on center line of TV
         ctx.beginPath();
         const centerYPoint = canvas.height / 2; // Center of the canvas vertically        
-        ctx.moveTo(canvas.width/2 - newWidth +650, centerYPoint); // Top vertex (aligned to the center of the canvas)
-        ctx.lineTo(canvas.width/2 - newWidth +650 - triangleSize / 2, centerYPoint + triangleSize); // Bottom-left vertex
-        ctx.lineTo(canvas.width/2 - newWidth +650 + triangleSize / 2, centerYPoint + triangleSize); // Bottom-right vertex
+        ctx.moveTo(nicheRect1X - 120, centerYPoint); // Top vertex (aligned to the center of the canvas)
+        ctx.lineTo(nicheRect1X - 120 - triangleSize / 2, centerYPoint + triangleSize); // Bottom-left vertex
+        ctx.lineTo(nicheRect1X - 120 + triangleSize / 2, centerYPoint + triangleSize); // Bottom-right vertex
         ctx.closePath();
         ctx.fill();
 
         //Draw connecting line
         ctx.beginPath();
-        ctx.moveTo(canvas.width/2 - newWidth +650, yOffset); // Left triangle base
-        ctx.lineTo(canvas.width/2 - newWidth +650, centerYPoint); // Right triangle base
+        ctx.moveTo(nicheRect1X - 120, yOffset); // Left triangle base
+        ctx.lineTo(nicheRect1X - 120, centerYPoint); // Right triangle base
         ctx.stroke();
 
         // Draw a rotated "Z" symbol with a white background on the connecting line
         ctx.save(); // Save the current context state
 
-        const breaklineX = canvas.width/2 - newWidth +650; // X-coordinate (center of the line)
+        const breaklineX = nicheRect1X - 120; // X-coordinate (center of the line)
         const breaklineY = (yOffset + centerYPoint) / 2.2; // Y-coordinate (midpoint of the line)
         const textSize = 20; // Font size for the letter "Z"
 
@@ -337,6 +335,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
             height: Height,
             nicheWidth: Width + 2.5,
             nicheHeight: Height + 2.5,
+            flrDis: floorDis || "N/A",
         };
         
         const positions = {
@@ -344,11 +343,11 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData) => {
             heightPos: { x: rect1X + newWidth + 200, y: rect1Y + newHeight / 2 - 50 },
             nicheLeftPos: { x: rect1X - 200, y: rect1Y + newHeight / 2 - 50 },
             nicheBottomPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y + newHeight + 220 },
+            flrDisPos: { x: nicheRect1X+100, y:yOffset-100},
         };
         
         // Draw all measurements with backgrounds
         drawMeasurementText(ctx, measurements, positions);
-
 
     }
 

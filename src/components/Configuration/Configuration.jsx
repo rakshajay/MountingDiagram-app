@@ -53,7 +53,7 @@ function Configuration({ onScreenSelect, screenData }) {
     const selectedData = screenData.find(
       (item) => item["Screen MFR"] === screen
     );
-    onScreenSelect(screen, selectedData);
+    onScreenSelect(screen, selectedData,floorDis);
   };
   
   const handlePrint = () => {
@@ -246,7 +246,12 @@ function Configuration({ onScreenSelect, screenData }) {
             placeholder=""
             type="text"
             value={`${floorDis}`}
-            onChange={(e) => setFloorDis(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setFloorDis(value);
+              const selectedData = screenData.find((item) => item["Screen MFR"] === selectedScreen);
+              onScreenSelect(selectedScreen, selectedData, value); // Update parent
+            }}
           />
         </div>
         <div className="floor-distance">

@@ -1,5 +1,4 @@
 import React from 'react';
-import "./NicheDim.scss"
 import "../Configuration/Configuration.scss";
 
 function NicheDim({screenData, selectedScreen}) {

@@ -30,8 +30,8 @@ export const drawTextWithBackground = (ctx, text, x, y, padding = 10, fontSize =
 };
 
 export const drawMeasurementText = (ctx, measurements, positions) => {
-    const { width, height, nicheWidth, nicheHeight } = measurements;
-    const { widthPos, heightPos, nicheLeftPos, nicheBottomPos } = positions;
+    const { width, height, nicheWidth, nicheHeight, flrDis } = measurements;
+    const { widthPos, heightPos, nicheLeftPos, nicheBottomPos, flrDisPos } = positions;
 
     const textPadding = 30; // Padding for rectangles
     const fontSize = 36; // Font size for the text
@@ -41,4 +41,5 @@ export const drawMeasurementText = (ctx, measurements, positions) => {
     drawTextWithBackground(ctx, `${height}"`, heightPos.x, heightPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `${nicheWidth}"`, nicheLeftPos.x, nicheLeftPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `${nicheHeight}"`, nicheBottomPos.x, nicheBottomPos.y, textPadding, fontSize);
+    drawTextWithBackground(ctx, `Floor Distance: ${flrDis}`, flrDisPos.x, flrDisPos.y, textPadding, fontSize);
 };

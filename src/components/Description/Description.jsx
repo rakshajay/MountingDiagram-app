@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Description.scss"
 
 function Description({ screenData, selectedScreen }) {
 
