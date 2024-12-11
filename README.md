@@ -109,10 +109,10 @@ Follow these steps to set up the project locally:
 Here’s a sneak peek of the app in action:
 
 ### App Walkthrough:
-![GIF Placeholder](src\assets\images\Untitled_Project_V1.mp4)
+![GIF Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/Untitled_Project_V1.mp4)
 
 ### Equipment Selection:
-![Screenshot Placeholder](src\assets\images\screenshot.png)
+![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
 
 ---
 
