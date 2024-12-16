@@ -4,7 +4,11 @@ import signCastLogo from "../../assets/Logo/sign-cast1.png"
 function CompanyInfo() {
     return (
         <div className="signage" id="border">
-            <img src={signCastLogo}/>
+             <img 
+      src={signCastLogo} 
+      alt="Logo" 
+      style={{ width: '80%' }} 
+    />
             <p>
                 361 Steelcase RD. W, #1,
             </p>

@@ -29,8 +29,8 @@ function Configuration() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    drawCanvas(canvasRef, selectedScreen, screenData, floorDis, selected);
-  }, [selectedScreen, screenData, floorDis, selected]);
+    drawCanvas(canvasRef, selectedScreen, screenData, floorDis, selected, selectedType);
+  }, [selectedScreen, screenData, floorDis, selected, selectedType]);
 
   //console.log("selected", selected);
   // fecthing data from javscript and converting it to JSON
@@ -98,6 +98,7 @@ function Configuration() {
           height={2200}
         ></canvas>
       </div>
+      <div className="switches__second">
       <div className="switches__left">
         <div>
           <NicheDim screenData={screenData} selectedScreen={selectedScreen} />
@@ -323,6 +324,7 @@ function Configuration() {
         {/* Description Section */}
         <Description screenData={screenData} selectedScreen={selectedScreen} />
         <button onClick={handlePrint}>Print Page</button>
+      </div>
       </div>
     </div>
   );

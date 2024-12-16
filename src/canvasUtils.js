@@ -1,7 +1,7 @@
 import { drawMeasurementText } from "./textUtils";
 
 
-export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, selected) => {
+export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, selected, selectedType) => {
     if (!canvasRef.current) return;
     console.log("floorDis", floorDis)
     console.log("selected", selected)
@@ -57,14 +57,16 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         const rect1Y = centerY - (newHeight / 2);
 
         // to get niche rec in center of screen 
-        const nicheRect1X = centerX - (newWidth / 2 + newNiche / 2);
-        const nicheRrect1Y = centerY - (newHeight / 2 + newNiche / 2);
-
+        let nicheRect1X = centerX - (newWidth / 2 + newNiche / 2);
+        let nicheRrect1Y = centerY - (newHeight / 2 + newNiche / 2);
+ 
         ctx.lineWidth = 10;
         ctx.strokeRect(rect1X, rect1Y, newWidth, newHeight);
-
+     
         ctx.lineWidth = 2;
-        ctx.strokeRect(nicheRect1X, nicheRrect1Y, newWidth + newNiche, newHeight + newNiche);
+        if(selectedType==="Niche"){
+            ctx.strokeRect(nicheRect1X, nicheRrect1Y, newWidth + newNiche, newHeight + newNiche);
+        }
 
         //Draw dashed rec inside TV rec
         const offset = 4 * 18; // 72 pixels
@@ -155,9 +157,9 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
 
 
 
+        if(selectedType==="Niche"){   
+            
         // Left-side configuration for the second rectangle
-
-
 
         // Horizontal line on the left top side of the second rectangle
         ctx.beginPath();
@@ -228,7 +230,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         ctx.beginPath();
         ctx.moveTo(nicheRect1X + 10, nicheRrect1Y + newHeight + newNiche + 150); // Left triangle base
         ctx.lineTo(nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 150); // Right triangle base
-        ctx.stroke();
+        ctx.stroke();}
 
         // Floor
 
@@ -365,7 +367,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
             nicheHeight: Height + 2.5,
             flrDis: floorDis || "N/A",
         };
-        
+
         const positions = {
             widthPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y - 150 },
             heightPos: { x: rect1X + newWidth + 200, y: rect1Y + newHeight / 2 - 50 },
