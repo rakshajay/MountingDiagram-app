@@ -16,7 +16,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         if (selected === "Vertical") {
             [Width, Height] = [Height, Width]; // Swap values
         }
-        
+
         const scaleDimensions = (width, height, maxWidth) => {
             if (width > maxWidth) {
                 const scaleFactor = maxWidth / width;
@@ -27,16 +27,16 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
             }
             return { width, height };
         };
-        
+
         // Apply scaling conditions
         if (Width > 500) {
             ({ width: Width, height: Height } = scaleDimensions(Width, Height, 80));
         } else if (Width > 100) {
             ({ width: Width, height: Height } = scaleDimensions(Width, Height, 100));
         }
-        
+
         console.log("Scaled Width:", Width, "Scaled Height:", Height);
-        
+
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
@@ -59,12 +59,12 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         // to get niche rec in center of screen 
         let nicheRect1X = centerX - (newWidth / 2 + newNiche / 2);
         let nicheRrect1Y = centerY - (newHeight / 2 + newNiche / 2);
- 
+
         ctx.lineWidth = 10;
         ctx.strokeRect(rect1X, rect1Y, newWidth, newHeight);
-     
+
         ctx.lineWidth = 2;
-        if(selectedType==="Niche"){
+        if (selectedType === "Niche") {
             ctx.strokeRect(nicheRect1X, nicheRrect1Y, newWidth + newNiche, newHeight + newNiche);
         }
 
@@ -157,80 +157,81 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
 
 
 
-        if(selectedType==="Niche"){   
-            
-        // Left-side configuration for the second rectangle
+        if (selectedType === "Niche") {
 
-        // Horizontal line on the left top side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X - 20, nicheRrect1Y); // Start point
-        ctx.lineTo(nicheRect1X - 80, nicheRrect1Y); // Horizontal extension
-        ctx.stroke();
+            // Left-side configuration for the second rectangle
 
-        // Horizontal line on the left bottom side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X - 20, nicheRrect1Y + newHeight + newNiche); // Start point
-        ctx.lineTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche); // Horizontal extension
-        ctx.stroke();
+            // Horizontal line on the left top side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X - 20, nicheRrect1Y); // Start point
+            ctx.lineTo(nicheRect1X - 80, nicheRrect1Y); // Horizontal extension
+            ctx.stroke();
 
-        // Upward-pointing triangle on the left top side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + 10); // Top vertex
-        ctx.lineTo(nicheRect1X - 80 - triangleSize / 2, nicheRrect1Y + 20 + triangleSize / 2); // Bottom-left vertex
-        ctx.lineTo(nicheRect1X - 80 + triangleSize / 2, nicheRrect1Y + 20 + triangleSize / 2); // Bottom-right vertex
-        ctx.closePath();
-        ctx.fill();
+            // Horizontal line on the left bottom side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X - 20, nicheRrect1Y + newHeight + newNiche); // Start point
+            ctx.lineTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche); // Horizontal extension
+            ctx.stroke();
 
-        // Downward-pointing triangle on the left bottom side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche - 20 + triangleSize / 2); // Bottom vertex
-        ctx.lineTo(nicheRect1X - 80 - triangleSize / 2, nicheRrect1Y + newHeight + newNiche - 20 - triangleSize / 2); // Top-left vertex
-        ctx.lineTo(nicheRect1X - 80 + triangleSize / 2, nicheRrect1Y + newHeight + newNiche - 20 - triangleSize / 2); // Top-right vertex
-        ctx.closePath();
-        ctx.fill();
+            // Upward-pointing triangle on the left top side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + 10); // Top vertex
+            ctx.lineTo(nicheRect1X - 80 - triangleSize / 2, nicheRrect1Y + 20 + triangleSize / 2); // Bottom-left vertex
+            ctx.lineTo(nicheRect1X - 80 + triangleSize / 2, nicheRrect1Y + 20 + triangleSize / 2); // Bottom-right vertex
+            ctx.closePath();
+            ctx.fill();
 
-        // Line connecting the two triangles on the left side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + 10); // Start point (top triangle)
-        ctx.lineTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche - 20 + triangleSize / 2); // End point (bottom triangle)
-        ctx.stroke();
+            // Downward-pointing triangle on the left bottom side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche - 20 + triangleSize / 2); // Bottom vertex
+            ctx.lineTo(nicheRect1X - 80 - triangleSize / 2, nicheRrect1Y + newHeight + newNiche - 20 - triangleSize / 2); // Top-left vertex
+            ctx.lineTo(nicheRect1X - 80 + triangleSize / 2, nicheRrect1Y + newHeight + newNiche - 20 - triangleSize / 2); // Top-right vertex
+            ctx.closePath();
+            ctx.fill();
+
+            // Line connecting the two triangles on the left side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X - 80, nicheRrect1Y + 10); // Start point (top triangle)
+            ctx.lineTo(nicheRect1X - 80, nicheRrect1Y + newHeight + newNiche - 20 + triangleSize / 2); // End point (bottom triangle)
+            ctx.stroke();
 
 
-        // Bottom-side configuration for the second rectangle
+            // Bottom-side configuration for the second rectangle
 
-        // Draw a verti line on the bottom left side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X, nicheRrect1Y + newHeight + newNiche + 20); // Start point
-        ctx.lineTo(nicheRect1X, nicheRrect1Y + newHeight + newNiche + 150); // Horizontal extension
-        ctx.stroke();
+            // Draw a verti line on the bottom left side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X, nicheRrect1Y + newHeight + newNiche + 20); // Start point
+            ctx.lineTo(nicheRect1X, nicheRrect1Y + newHeight + newNiche + 150); // Horizontal extension
+            ctx.stroke();
 
-        // Draw a verti line on the bottom right side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X + newWidth + newNiche, nicheRrect1Y + newHeight + newNiche + 20); // Start point
-        ctx.lineTo(nicheRect1X + newWidth + newNiche, nicheRrect1Y + newHeight + newNiche + 150); // Horizontal extension
-        ctx.stroke();
+            // Draw a verti line on the bottom right side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X + newWidth + newNiche, nicheRrect1Y + newHeight + newNiche + 20); // Start point
+            ctx.lineTo(nicheRect1X + newWidth + newNiche, nicheRrect1Y + newHeight + newNiche + 150); // Horizontal extension
+            ctx.stroke();
 
-        // Draw a filled black triangle on the bottom left side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X + 10, nicheRrect1Y + newHeight + newNiche + 150); // Base vertex
-        ctx.lineTo(nicheRect1X + 10 + triangleSize, nicheRrect1Y + newHeight + newNiche + 150 - triangleSize / 2); // Top-left vertex
-        ctx.lineTo(nicheRect1X + 10 + triangleSize, nicheRrect1Y + newHeight + newNiche + 150 + triangleSize / 2); // Top-right vertex
-        ctx.closePath();
-        ctx.fill();
+            // Draw a filled black triangle on the bottom left side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X + 10, nicheRrect1Y + newHeight + newNiche + 150); // Base vertex
+            ctx.lineTo(nicheRect1X + 10 + triangleSize, nicheRrect1Y + newHeight + newNiche + 150 - triangleSize / 2); // Top-left vertex
+            ctx.lineTo(nicheRect1X + 10 + triangleSize, nicheRrect1Y + newHeight + newNiche + 150 + triangleSize / 2); // Top-right vertex
+            ctx.closePath();
+            ctx.fill();
 
-        // Draw a filled black triangle on the bottom right side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 150); // Base vertex
-        ctx.lineTo(nicheRect1X + newWidth + newNiche - 10 - triangleSize, nicheRrect1Y + newHeight + newNiche + 150 - triangleSize / 2); // Top-right vertex
-        ctx.lineTo(nicheRect1X + newWidth + newNiche - 10 - triangleSize, nicheRrect1Y + newHeight + newNiche + 150 + triangleSize / 2); // Bottom-right vertex
-        ctx.closePath();
-        ctx.fill();
+            // Draw a filled black triangle on the bottom right side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 150); // Base vertex
+            ctx.lineTo(nicheRect1X + newWidth + newNiche - 10 - triangleSize, nicheRrect1Y + newHeight + newNiche + 150 - triangleSize / 2); // Top-right vertex
+            ctx.lineTo(nicheRect1X + newWidth + newNiche - 10 - triangleSize, nicheRrect1Y + newHeight + newNiche + 150 + triangleSize / 2); // Bottom-right vertex
+            ctx.closePath();
+            ctx.fill();
 
-        // Draw a line connecting the two triangles on the bottom side of the second rectangle
-        ctx.beginPath();
-        ctx.moveTo(nicheRect1X + 10, nicheRrect1Y + newHeight + newNiche + 150); // Left triangle base
-        ctx.lineTo(nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 150); // Right triangle base
-        ctx.stroke();}
+            // Draw a line connecting the two triangles on the bottom side of the second rectangle
+            ctx.beginPath();
+            ctx.moveTo(nicheRect1X + 10, nicheRrect1Y + newHeight + newNiche + 150); // Left triangle base
+            ctx.lineTo(nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 150); // Right triangle base
+            ctx.stroke();
+        }
 
         // Floor
 
@@ -245,7 +246,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         ctx.beginPath();
         ctx.moveTo(nicheRect1X - 120, yOffset); // Base vertex (aligned with the floor line)
         ctx.lineTo(nicheRect1X - 120 + triangleSize / 2, yOffset - triangleSize); // Bottom-left vertex
-        ctx.lineTo(nicheRect1X - 120- triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
+        ctx.lineTo(nicheRect1X - 120 - triangleSize / 2, yOffset - triangleSize); // Bottom-right vertex
         ctx.closePath();
         ctx.fill();
 
@@ -312,11 +313,11 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
 
         ctx.lineWidth = 2;
         ctx.setLineDash([15, 15]);
-        // Draw rectangles if selectedRecpBox exists
+        // Draw rectangles for RecpBox 
         const offset4Inches = newHeight / 200 * 18; // 4 inches offset (72 pixels)
         const offset1Inch = 1 * 18;   // 1 inch offset (18 pixels)
-        const rectHeight = newHeight / 4;        // Height of the rectangle in pixels
-        const rectWidth = newWidth / 6;         // Width of the rectangle in pixels
+        const rectHeight = newHeight / 4;  // Height of the rectangle in pixels
+        const rectWidth = newWidth / 6; // Width of the rectangle in pixels
 
         // First rectangle: 4 inches below the center horizontal line
         const firstRectX = (canvas.width / 2) - (rectWidth / 2); // Center horizontally
@@ -373,12 +374,53 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
             heightPos: { x: rect1X + newWidth + 200, y: rect1Y + newHeight / 2 - 50 },
             nicheLeftPos: { x: rect1X - 200, y: rect1Y + newHeight / 2 - 50 },
             nicheBottomPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y + newHeight + 220 },
-            flrDisPos: { x: nicheRect1X+100, y:yOffset-100},
+            flrDisPos: { x: nicheRect1X + 100, y: yOffset - 100 },
         };
-        
+
         // Draw all measurements with backgrounds
         drawMeasurementText(ctx, measurements, positions);
+       
 
+        //RECP TEXT
+
+        // Draw filled circle at the start of the line
+        ctx.beginPath();
+        ctx.arc(firstRectX + rectWidth / 2, firstRectY + rectHeight / 2, 5, 0, 2 * Math.PI); // Circle at start point
+        ctx.fill();
+
+        // Text for Receptacle Box annotation
+        ctx.fillText("Receptacle Box", nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 260);
+
+        // Draw line from circle to text
+        ctx.beginPath();
+        ctx.moveTo(firstRectX + rectWidth / 2, firstRectY + rectHeight / 2); // Start point
+        ctx.lineTo(nicheRect1X + newWidth + newNiche - 150, nicheRrect1Y + newHeight + newNiche + 300); // End point
+        ctx.stroke();
+
+        // Draw short horizontal line at the end of the main line
+        ctx.beginPath();
+        ctx.moveTo(nicheRect1X + newWidth + newNiche - 150, nicheRrect1Y + newHeight + newNiche + 300); // Start point
+        ctx.lineTo(nicheRect1X + newWidth + newNiche - 50, nicheRrect1Y + newHeight + newNiche + 300); // Horizontal line (20px long)
+        ctx.stroke();
+
+        
+       //CENTER POINT TEXT
+       
+        //Text for recp box annotation
+        ctx.fillText("Intended screen center", centerX + 380, rect1Y - 160);
+
+        // Draw line from circle to text
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY); // Start point
+        ctx.lineTo(centerX + 200, rect1Y - 130); // End point
+        ctx.stroke();
+
+        // Draw short horizontal line at the end of the main line
+        ctx.beginPath();
+        ctx.moveTo(centerX + 200, rect1Y - 130); // Start point
+        ctx.lineTo(centerX + 320, rect1Y - 130); // Horizontal line (20px long)
+        ctx.stroke();
+        
     }
 
 
