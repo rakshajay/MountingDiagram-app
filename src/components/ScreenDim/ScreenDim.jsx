@@ -15,35 +15,35 @@ function ScreenDim({screenData, selectedScreen}) {
         <h3>
             Screen Dimentions
         </h3>
-        <div className="floor-distance">
-          <label htmlFor="height" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="height" className="switches__floor-distance-label">
             Height
           </label>
           <input
             id="height"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
            value={`${Height}"`}
            readOnly
           />
         </div>
-        <div className="floor-distance">
-          <label htmlFor="Width" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="Width" className="switches__floor-distance-label">
            Width
           </label>
           <input
             id="width"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
             value={`${Width}"`}
            readOnly
           />
         </div>
-        <div className="floor-distance">
-          <label htmlFor="depth" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="depth" className="switches__floor-distance-label">
           Size
           </label>
           <input
             id="depth"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
             value={`${Depth}"`}
            readOnly
           />

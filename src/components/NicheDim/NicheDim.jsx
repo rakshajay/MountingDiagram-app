@@ -15,35 +15,35 @@ function NicheDim({screenData, selectedScreen}) {
         <h3>
             Niche Dimentions
         </h3>
-        <div className="floor-distance">
-          <label htmlFor="height" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="height" className="switches__floor-distance-label">
             Height
           </label>
           <input
             id="height"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
            value={`${Height+2.5}"`}
            readOnly
           />
         </div>
-        <div className="floor-distance">
-          <label htmlFor="Width" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="Width" className="switches__floor-distance-label">
            Width
           </label>
           <input
             id="width"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
             value={`${Width+2.5}"`}
            readOnly
           />
         </div>
-        <div className="floor-distance">
-          <label htmlFor="depth" className="floor-distance__label">
+        <div className="switches__floor-distance">
+          <label htmlFor="depth" className="switches__floor-distance-label">
           Depth
           </label>
           <input
             id="depth"
-            className="floor-distance__input"
+            className="switches__floor-distance-input"
             value={`${Depth+2.16}"`}
            readOnly
           />

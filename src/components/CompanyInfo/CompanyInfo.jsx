@@ -7,7 +7,7 @@ function CompanyInfo() {
              <img 
       src={signCastLogo} 
       alt="Logo" 
-      style={{ width: '80%' }} 
+      style={{ width: '30%' }} 
     />
             <p>
                 361 Steelcase RD. W, #1,

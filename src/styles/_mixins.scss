@@ -11,12 +11,6 @@
   }
 }
 
-@mixin print-min-width($min-width: 768px) {
-  @media print and (min-width: #{$min-width}) {
-    @content;
-  }
-}
-
 
 // Mixins for Desktop & Tablet Text Styles
 
@@ -59,3 +53,8 @@
   line-height: 1rem;
 }
 
+@mixin flex-column-gap($gap: 1rem) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}

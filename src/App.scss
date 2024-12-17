@@ -3,12 +3,13 @@
 @use "./styles/fonts" as *;
 
 body {
-  font-family: "Titillium";
+  font-family: "Titillium", Times, serif;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
+
 h1 {
   font-family: "Titillium";
   font-size: 1.75rem;
@@ -42,20 +43,6 @@ h3 {
   }
 }
 
-h4 {
-  
-  font-size: 11px;
-  line-height: 16px;
-  font-weight: bold;
-  color: $secondary-color-slate;
-  margin-block-end: 0.5rem;
-
-  @include tablet {
-    font-size: 0.75rem;
-    line-height: 1.125rem;
-  }
-}
-
 p {
   @include mobile-p3-body-small;
   margin: 0;
@@ -85,7 +72,7 @@ button {
 
 input {
   border-radius: 1.25rem;
-  padding: 0.2rem;
+  padding: 0.225rem;
   margin-bottom: .2rem;
   width: 100%;
   box-sizing: border-box;

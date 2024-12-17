@@ -28,35 +28,35 @@ function notes({ selectedRecpBox, recpBoxData, mountsData, selectedMount }) {
                     </ul>
                 </div>
 
-                <div className="floor-distance">
-                    <label htmlFor="height" className="floor-distance__label">
+                <div className="switches__floor-distance">
+                    <label htmlFor="height" className="switches__floor-distance-label">
                         Recptacle box height
                     </label>
                     <input
                         id="height"
-                        className="floor-distance__input"
+                        className="switches__floor-distance-input"
                         value={`${Height}"`}
                         readOnly
                     />
                 </div>
-                <div className="floor-distance">
-                    <label htmlFor="Width" className="floor-distance__label">
+                <div className="switches__floor-distance">
+                    <label htmlFor="Width" className="switches__floor-distance-label">
                     Recptacle box width
                     </label>
                     <input
                         id="width"
-                        className="floor-distance__input"
+                        className="switches__floor-distance-input"
                         value={`${Width}"`}
                         readOnly
                     />
                 </div>
-                <div className="floor-distance">
-                    <label htmlFor="depth" className="floor-distance__label">
+                <div className="switches__floor-distance">
+                    <label htmlFor="depth" className="switches__floor-distance-label">
                     Recptacle box Depth
                     </label>
                     <input
                         id="depth"
-                        className="floor-distance__input"
+                        className="switches__floor-distance-input"
                         value={`${Depth}"`}
                         readOnly
                     />

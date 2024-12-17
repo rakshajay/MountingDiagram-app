@@ -84,7 +84,7 @@ function Configuration() {
     <div className="switches">
       <div className="switches__first">
         <canvas
-          className="switches__drawings"
+          className="switches__canvas"
           id="canvas"
           ref={canvasRef}
           width={2400}
@@ -289,26 +289,29 @@ function Configuration() {
               }`}
             ></div>
           </div>
-          <div className="floor-distance">
-            <label htmlFor="flrDistance" className="floor-distance__label">
+
+          {/* Fllor Distance */}
+
+          <div className="switches__floor-distance">
+            <label htmlFor="flrDistance" className="switches__floor-distance-label">
               Floor Distance
             </label>
             <input
               id="flrDistance"
-              className="floor-distance__input"
+              className="switches__floor-distance-input"
               placeholder=""
               type="text"
               value={`${floorDis}`}
               onChange={(e) => setFloorDis(e.target.value)}
             />
           </div>
-          <div className="floor-distance">
-            <label htmlFor="flrDistance" className="floor-distance__label">
+          <div className="switches__floor-distance">
+            <label htmlFor="flrDistance" className="switches__floor-distance-label">
               Niche Depth Var
             </label>
             <input
               id="flrDistance"
-              className="floor-distance__input"
+              className="switches__floor-distance-input"
               placeholder="0.5"
               type="text"
             />
