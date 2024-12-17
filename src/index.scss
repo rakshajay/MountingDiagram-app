@@ -1,7 +1,17 @@
-/* Set the print page size and margins globally */
 @page {
-    size: A3 landscape; /* A3 size with portrait orientation */
-    margin: 1cm; /* Margins around the printed content */
+    size: A3 landscape; /* A3 size for printing */
+    margin: 1cm; /* Adjust margins */
   }
   
+  @media print and (min-width: 768px) {
+    body {
+        max-width: 1024px;
+      margin: 0;
+      padding: 0;
+    }
+      .container {
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+  }
   
