@@ -290,7 +290,7 @@ function Configuration() {
             ></div>
           </div>
 
-          {/* Fllor Distance */}
+          {/* Floor Distance */}
 
           <div className="switches__floor-distance">
             <label htmlFor="flrDistance" className="switches__floor-distance-label">
