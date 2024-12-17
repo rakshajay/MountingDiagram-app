@@ -12,6 +12,7 @@
   text-align: left;
   padding: 0.6rem;
   box-sizing: border-box;
+  margin-left: 1rem;
 
   @include tablet {
     flex-direction: row;
@@ -210,20 +211,17 @@
 @media print {
   @page {
     size: A3 landscape;
-    margin: 0; // Ensures no default browser margin
+    margin: 0; 
   }
 
   body {
     display: flex;
-    align-items: center; // Center vertically
-    height: 100vh; // Full viewport height
-    margin: 1rem;
+    align-items: center; 
+    height: 100vh; 
     text-align: center;
-    width: 100vw;
   }
 
-
   button {
-    display: none; // Hide buttons in print view
+    display: none; 
   }
 }

@@ -1,0 +1,11 @@
+@media print and (min-width: 768px) {
+  body {
+    max-width: 1024px;
+    padding: 0;
+    margin-right: -.5rem; 
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+}
