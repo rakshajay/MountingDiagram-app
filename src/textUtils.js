@@ -29,17 +29,20 @@ export const drawTextWithBackground = (ctx, text, x, y, padding = 10, fontSize =
     ctx.fillText(text, x, y);
 };
 
-export const drawMeasurementText = (ctx, measurements, positions) => {
-    const { width, height, nicheWidth, nicheHeight, flrDis } = measurements;
+export const drawMeasurementText = (ctx, originalMeasurements, positions) => {
+    const { width, height, nicheWidth, nicheHeight, flrDis } = originalMeasurements;
     const { widthPos, heightPos, nicheLeftPos, nicheBottomPos, flrDisPos } = positions;
  
     const textPadding = 30; // Padding for rectangles
     const fontSize = 36; // Font size for the text
 
-    // Draw all text measurements with background
+    // Draw all text originalMeasurements with background
     drawTextWithBackground(ctx, `${width}"`, widthPos.x, widthPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `${height}"`, heightPos.x, heightPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `${nicheHeight}"`, nicheLeftPos.x, nicheLeftPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `${nicheWidth}"`, nicheBottomPos.x, nicheBottomPos.y, textPadding, fontSize);
     drawTextWithBackground(ctx, `Floor Distance: ${flrDis}`, flrDisPos.x, flrDisPos.y, textPadding, fontSize);
+
+    //Draw all text without background
+    
 };

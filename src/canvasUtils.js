@@ -3,20 +3,29 @@ import { drawMeasurementText } from "./textUtils";
 
 export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, selected, selectedType) => {
     if (!canvasRef.current) return;
-    console.log("floorDis", floorDis)
-    console.log("selected", selected)
+
     const selectedData = screenData.find(
         (row) => row["Screen MFR"] === selectedScreen
     );
     if (selectedData) {
         let { Height, Width } = selectedData;
-
-
-        // Swap Width and Height if orientation is Vertical
+        
+        //mesurements before scaling down for the text purpose
+        const originalMeasurements = {
+            width: Width,
+            height: Height,
+            nicheWidth: Width + 2.5,
+            nicheHeight: Height + 2.5,
+            flrDis: floorDis || "N/A",
+        };
+    
         if (selected === "Vertical") {
-            [Width, Height] = [Height, Width]; // Swap values
+            originalMeasurements.width = Height;
+            originalMeasurements.height = Width;
+            originalMeasurements.nicheWidth = Height + 2.5;
+            originalMeasurements.nicheHeight = Width + 2.5;
         }
-
+   
         const scaleDimensions = (width, height, maxWidth) => {
             if (width > maxWidth) {
                 const scaleFactor = maxWidth / width;
@@ -30,12 +39,16 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
 
         // Apply scaling conditions
         if (Width > 500) {
-            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 80));
+            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 60));
         } else if (Width > 100) {
-            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 100));
+            ({ width: Width, height: Height } = scaleDimensions(Width, Height, 60));
         }
 
-        console.log("Scaled Width:", Width, "Scaled Height:", Height);
+
+        // Swap Width and Height if orientation is Vertical
+        if (selected === "Vertical") {
+            [Width, Height] = [Height, Width]; // Swap values
+        }
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
@@ -361,14 +374,6 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
 
         //TEXT OR MESUREMENTS
 
-        const measurements = {
-            width: Width,
-            height: Height,
-            nicheWidth: Width + 2.5,
-            nicheHeight: Height + 2.5,
-            flrDis: floorDis || "N/A",
-        };
-
         const positions = {
             widthPos: { x: rect1X + newWidth / 2 - 100, y: rect1Y - 150 },
             heightPos: { x: rect1X + newWidth + 200, y: rect1Y + newHeight / 2 - 50 },
@@ -378,7 +383,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         };
 
         // Draw all measurements with backgrounds
-        drawMeasurementText(ctx, measurements, positions);
+        drawMeasurementText(ctx, originalMeasurements, positions);
        
 
         //RECP TEXT
@@ -389,7 +394,7 @@ export const drawCanvas = (canvasRef, selectedScreen, screenData, floorDis, sele
         ctx.fill();
 
         // Text for Receptacle Box annotation
-        ctx.fillText("Receptacle Box", nicheRect1X + newWidth + newNiche - 10, nicheRrect1Y + newHeight + newNiche + 260);
+        ctx.fillText("Receptacle Box", nicheRect1X + newWidth + newNiche - 20, nicheRrect1Y + newHeight + newNiche + 260);
 
         // Draw line from circle to text
         ctx.beginPath();

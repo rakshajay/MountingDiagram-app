@@ -60,16 +60,8 @@ function Configuration() {
     fetchData();
   }, []);
 
-  // const handleScreenChange = (event) => {
-  //   const screen = event.target.value;
-  //   setSelectedScreen(screen);
-  //   const selectedData = screenData.find(
-  //     (item) => item["Screen MFR"] === screen
-  //   );
-  //   onScreenSelect(screen, selectedData, floorDis);
-  // };
-
-  const handlePrint = () => {
+  const handlePrint = (event) => {
+    event.preventDefault();
     if (
       !selectedScreen ||
       !selectedMediaP ||
@@ -85,6 +77,7 @@ function Configuration() {
       return;
     }
     window.print();
+    
   };
 
   return (
