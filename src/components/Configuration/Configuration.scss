@@ -210,9 +210,20 @@
 @media print {
   @page {
     size: A3 landscape;
+    margin: 0; // Ensures no default browser margin
   }
 
+  body {
+    display: flex;
+    align-items: center; // Center vertically
+    height: 100vh; // Full viewport height
+    margin: 1rem;
+    text-align: center;
+    width: 100vw;
+  }
+
+
   button {
-    display: none;
+    display: none; // Hide buttons in print view
   }
 }

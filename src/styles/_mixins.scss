@@ -58,3 +58,14 @@
   flex-direction: column;
   gap: $gap;
 }
+
+h3 {
+  font-family: "Titillium" !important;
+  margin-bottom: .2rem;
+  margin-top:-.5rem;
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}

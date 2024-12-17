@@ -1,19 +1,19 @@
 import React from 'react';
 import "../Configuration/Configuration.scss";
 
-function NicheDim({screenData, selectedScreen}) {
+function NicheDim({ screenData, selectedScreen }) {
 
-    const selectedData = screenData.find(
-        (row) => row["Screen MFR"] === selectedScreen
-    );
+  const selectedData = screenData.find(
+    (row) => row["Screen MFR"] === selectedScreen
+  );
 
-    if (selectedData) {
-        const { Height, Width, Depth } = selectedData;
-        
-  return (
-    <div id="border">
+  if (selectedData) {
+    const { Height, Width, Depth } = selectedData;
+
+    return (
+      <div id="border">
         <h3>
-            Niche Dimentions
+          Niche Dimentions
         </h3>
         <div className="switches__floor-distance">
           <label htmlFor="height" className="switches__floor-distance-label">
@@ -22,34 +22,35 @@ function NicheDim({screenData, selectedScreen}) {
           <input
             id="height"
             className="switches__floor-distance-input"
-           value={`${Height+2.5}"`}
-           readOnly
+            value={`${Height + 2.5}"`}
+            readOnly
           />
         </div>
         <div className="switches__floor-distance">
           <label htmlFor="Width" className="switches__floor-distance-label">
-           Width
+            Width
           </label>
           <input
             id="width"
             className="switches__floor-distance-input"
-            value={`${Width+2.5}"`}
-           readOnly
+            value={`${Width + 2.5}"`}
+            readOnly
           />
         </div>
         <div className="switches__floor-distance">
           <label htmlFor="depth" className="switches__floor-distance-label">
-          Depth
+            Depth
           </label>
           <input
             id="depth"
             className="switches__floor-distance-input"
-            value={`${Depth+2.16}"`}
-           readOnly
+            value={`${Depth + 2.16}"`}
+            readOnly
           />
         </div>
-    </div>
-  )
-}}
+      </div>
+    )
+  }
+}
 
 export default NicheDim
