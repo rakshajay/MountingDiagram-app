@@ -1,34 +1,7 @@
 /* Set the print page size and margins globally */
 @page {
-    size: A4 landscape; /* A3 size with portrait orientation */
+    size: A3 landscape; /* A3 size with portrait orientation */
     margin: 1cm; /* Margins around the printed content */
   }
   
-  /* Print-specific styles */
-  @media print {
-    body {
-      margin: 0;
-      padding: 0;
-    }
-  
-    /* Adjust content container styles for printing */
-    .content {
-      width: 100%;
-      height: auto;
-      page-break-inside: avoid; /* Prevent breaking inside content */
-    }
-  
-    /* Ensure specific elements fit the A3 sheet */
-    .printpage__drawings {
-      width: 100%;
-      max-height: 100%;
-      page-break-inside: avoid;
-    }
-  
-    /* Optional: Customize font size for readability */
-    body, html {
-      font-size: 14pt;
-      line-height: 1.5;
-    }
-  }
   
