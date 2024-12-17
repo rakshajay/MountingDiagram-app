@@ -17,6 +17,10 @@
     flex-direction: row;
     gap:1rem;
   }
+  @media print {
+    size: a3;
+    flex-direction: row;
+    gap:1rem;}
 
   select{
     @include mobile-p3-body-small;
