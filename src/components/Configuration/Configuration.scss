@@ -42,7 +42,9 @@
       @include tablet{
           flex-direction: row;
       }
-      
+      @media print {
+        flex-direction: row;
+        gap:1rem;}
     }
     
     &__drawings{
@@ -57,6 +59,10 @@
    box-sizing: border-box;
 
     @include tablet{
+      width: 35vw;
+      flex-direction: row;
+    }
+    @media print {
       width: 35vw;
       flex-direction: row;
     }
@@ -77,6 +83,9 @@
         margin-top: auto;
       }
       @include tablet{
+        width: 20vw;
+      }
+      @media print {
         width: 20vw;
       }
     }
@@ -186,6 +195,10 @@
       margin-top: auto;
     }
     @include tablet{
+      order:1;
+      width: 20vw;
+    }
+    @media print {
       order:1;
       width: 20vw;
     }
