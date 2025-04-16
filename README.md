@@ -1,5 +1,5 @@
 # 📀 LED Screen Mounting Diagram Tool
- a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
+ A React-based interactive application designed to generate **customized installation diagrams** for LED screens.
  a React-based interactive application designed to generate **customized installation diagrams** for LED screens.
 
 ---
