@@ -8,7 +8,6 @@
 ![Screenshot Placeholder](https://github.com/rakshajay/MountingDiagram-app/blob/main/src/assets/images/screenshot.png)
 
 ## **Overview**
-## **Overview**
 
 This tool lets users:
 
